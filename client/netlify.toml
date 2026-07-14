@@ -6,12 +6,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[context.production.environment]
-  VITE_API_URL = "https://eventora-server.onrender.com/api"
-
-[context.deploy-preview.environment]
-  VITE_API_URL = "https://eventora-server.onrender.com/api"
-
-[context.branch-deploy.environment]
-  VITE_API_URL = "https://eventora-server.onrender.com/api"
