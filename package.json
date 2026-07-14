@@ -1,0 +1,17 @@
+{
+  "name": "eventora",
+  "version": "1.0.0",
+  "description": "Event booking application with server and client",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "autoprefixer": "^10.5.2",
+    "concurrently": "^9.1.0"
+  }
+}
