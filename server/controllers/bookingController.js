@@ -31,16 +31,16 @@ exports.bookEvent = async (req, res) => {
         if (!event) return res.status(404).json({ message: 'Event not found' });
         if (event.availableSeats <= 0) return res.status(400).json({ message: 'No seats available' });
 
-        const existingBooking = await Booking.findOne({ userId: req.user.id, eventId });
+        const existingBooking = await Booking.findOne({ userId: req.user._id, eventId });
         if (existingBooking && existingBooking.status !== 'cancelled') {
             return res.status(400).json({ message: 'Already booked or pending' });
         }
 
         const booking = await Booking.create({
-            userId: req.user.id,
+            userId: req.user._id,
             eventId,
             status: 'pending',
-            paymentStatus: 'not_paid',
+            paymentStatus: 'non_paid',
             amount: event.ticketPrice
         });
 
@@ -87,7 +87,7 @@ exports.getMyBookings = async (req, res) => {
     try {
         const bookings = req.user.role === 'admin'
             ? await Booking.find().populate('eventId').populate('userId', 'name email').sort({ createdAt: -1 })
-            : await Booking.find({ userId: req.user.id }).populate('eventId').sort({ createdAt: -1 });
+            : await Booking.find({ userId: req.user._id }).populate('eventId').sort({ createdAt: -1 });
         res.json(bookings);
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error: error.message });
@@ -98,7 +98,7 @@ exports.cancelBooking = async (req, res) => {
     try {
         const booking = await Booking.findById(req.params.id);
         if (!booking) return res.status(404).json({ message: 'Booking not found' });
-        if (booking.userId.toString() !== req.user.id && req.user.role !== 'admin') {
+        if (booking.userId.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
             return res.status(403).json({ message: 'Not authorized' });
         }
         if (booking.status === 'cancelled') return res.status(400).json({ message: 'Already cancelled' });
