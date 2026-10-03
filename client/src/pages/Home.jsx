@@ -7,6 +7,7 @@ const Home = () => {
     const [events, setEvents] = useState([]);
     const [search, setSearch] = useState('');
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
@@ -16,11 +17,13 @@ const Home = () => {
     }, [search]);
 
     const fetchEvents = async () => {
+        setError('');
         try {
             const { data } = await api.get(`/events?search=${search}`);
             setEvents(data);
         } catch (error) {
             console.error('Error fetching events:', error);
+            setError('Unable to load events. Check that the API and database are available.');
         } finally {
             setLoading(false);
         }
@@ -86,6 +89,8 @@ const Home = () => {
 
             {loading ? (
                 <div className="text-center py-20 text-xl font-semibold text-gray-600">Loading events...</div>
+            ) : error ? (
+                <div role="alert" className="text-center py-20 text-xl text-red-700">{error}</div>
             ) : events.length === 0 ? (
                 <div className="text-center py-20 text-xl text-gray-500">No events found matching your search.</div>
             ) : (

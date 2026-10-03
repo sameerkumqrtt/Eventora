@@ -1,5 +1,4 @@
 const mongoose=require('mongoose');
-const { create } = require('./User');
 const eventSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -21,11 +20,11 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    totalSeates: {
+    totalSeats: {
         type: Number,
         required: true
     },
-    availavleSeats: {
+    availableSeats: {
         type: Number,
         required: true
     },
@@ -35,7 +34,7 @@ const eventSchema = new mongoose.Schema({
     },
     imageUrl:{
         type: String,
-        required: true
+        default: ''
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

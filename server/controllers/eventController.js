@@ -1,4 +1,4 @@
-const Events = require('../models/Event');
+const Event = require('../models/Event');
 
 exports.getAllEvents = async (req, res) => {
     try {
@@ -9,7 +9,10 @@ exports.getAllEvents = async (req, res) => {
         if(req.query.location){
             filters.location = req.query.location;
         }
-        const events = await Events.find(filters); 
+        if (req.query.search) {
+            filters.title = { $regex: req.query.search, $options: 'i' };
+        }
+        const events = await Event.find(filters);
         res.json(events);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching events', error });
@@ -18,7 +21,7 @@ exports.getAllEvents = async (req, res) => {
 
 exports.getEventById = async (req, res) => {
     try {
-        const event = await Events.findById(req.params.id);
+        const event = await Event.findById(req.params.id);
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
@@ -38,8 +41,10 @@ exports.createEvent = async (req, res) => {
             location,
             category,
             totalSeats,
+            availableSeats: totalSeats,
             ticketPrice,
-            imageUrl
+            imageUrl,
+            createdBy: req.user._id
         });
         res.status(201).json(event);
     } catch (error) {

@@ -27,8 +27,8 @@ const events = [
         date: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days from now
         location: 'Silicon Valley Innovation Center, CA',
         category: 'Technology',
-        totalSeates: 200,
-        availavleSeats: 200,
+        totalSeats: 200,
+        availableSeats: 200,
         ticketPrice: 0,
         imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800'
     },
@@ -38,8 +38,8 @@ const events = [
         date: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000), // 20 days from now
         location: 'Grand Arena, New York',
         category: 'Music',
-        totalSeates: 500,
-        availavleSeats: 500,
+        totalSeats: 500,
+        availableSeats: 500,
         ticketPrice: 1500,
         imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800'
     },
@@ -49,8 +49,8 @@ const events = [
         date: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
         location: 'The Ritz-Carlton, London',
         category: 'Business',
-        totalSeates: 150,
-        availavleSeats: 150,
+        totalSeats: 150,
+        availableSeats: 150,
         ticketPrice: 5000,
         imageUrl: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800'
     },
@@ -60,8 +60,8 @@ const events = [
         date: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days from now
         location: 'Downtown Art Museum',
         category: 'Art',
-        totalSeates: 300,
-        availavleSeats: 300,
+        totalSeats: 300,
+        availableSeats: 300,
         ticketPrice: 200,
         imageUrl: 'https://images.unsplash.com/photo-1536924940846-227afb31e2a5?auto=format&fit=crop&q=80&w=800'
     },
@@ -71,8 +71,8 @@ const events = [
         date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
         location: 'Convention Center, Miami',
         category: 'Business',
-        totalSeates: 250,
-        availavleSeats: 250,
+        totalSeats: 250,
+        availableSeats: 250,
         ticketPrice: 100,
         imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800'
     },
@@ -82,8 +82,8 @@ const events = [
         date: new Date(Date.now() + 12 * 24 * 60 * 60 * 1000), // 12 days from now
         location: 'Tech Hub, Seattle',
         category: 'Technology',
-        totalSeates: 100,
-        availavleSeats: 100,
+        totalSeats: 100,
+        availableSeats: 100,
         ticketPrice: 600,
         imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800'
     }
