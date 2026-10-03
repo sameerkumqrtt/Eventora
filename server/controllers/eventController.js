@@ -15,7 +15,8 @@ exports.getAllEvents = async (req, res) => {
         const events = await Event.find(filters);
         res.json(events);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching events', error });
+        console.error('Error fetching events:', error);
+        res.status(500).json({ message: 'Error fetching events' });
     }
 };
 
